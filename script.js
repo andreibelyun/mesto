@@ -19,8 +19,15 @@ popupCloseButton.addEventListener('click', function() {
     popupElement.classList.remove('popup_opened');
 });
 
-popupSaveButtonElement.addEventListener('click', function() {
+let editInformation = function() {
     document.querySelector('.profile__name').textContent = popupInputNameElement.value;
     document.querySelector('.profile__description').textContent = popupInputInfoElement.value;
     popupElement.classList.remove('popup_opened');
-});
+}
+
+popupSaveButtonElement.addEventListener('click', editInformation);
+popupElement.addEventListener('keyup', function(event) {
+    if(event.code !== 'Enter') {return}
+    editInformation();
+})
+
