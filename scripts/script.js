@@ -32,4 +32,4 @@ let editInformation = function(event) {
     closePopup();
 }
 
-popupFormElement.addEventListener('subimt', editInformation);
+popupFormElement.addEventListener('submit', editInformation);
