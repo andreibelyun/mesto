@@ -7,6 +7,7 @@
     border: none;
     margin: 0;
     padding: 0;
+    transition: opacity 1s ease-out;
 }
 
 .card__like_active {
@@ -16,5 +17,4 @@
 .card__like:hover {
     cursor: pointer;
     opacity: .5;
-    transition: opacity 1s ease-out;
 }

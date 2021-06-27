@@ -4,12 +4,12 @@
     height: 33px;
     background-image: url('../../../images/logo.svg');
     background-size: cover;
+    transition: opacity 1s ease-out;
 }
 
 .header__logo:hover {
     cursor: pointer;
     opacity: .8;
-    transition: opacity 1s ease-out;
 }
 
 @media screen and (max-width: 1279px) {

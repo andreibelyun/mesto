@@ -8,9 +8,9 @@ let profileNameElement = document.querySelector('.profile__name');
 let profileInfoElement = document.querySelector('.profile__description');
 
 function initForm() {
-    openPopup();
     popupInputNameElement.value = profileNameElement.textContent;
     popupInputInfoElement.value = profileInfoElement.textContent;
+    openPopup();
 }
 
 function openPopup() {

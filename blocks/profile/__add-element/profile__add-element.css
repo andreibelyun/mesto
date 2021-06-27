@@ -6,6 +6,7 @@
     background-color: #000;
     margin-left: auto;
     padding: 0;
+    transition: opacity 1s ease-out;
 }
 
 @media  screen and (max-width: 1279px) {
@@ -19,5 +20,4 @@
 .profile__add-element:hover {
     cursor: pointer;
     opacity: .6;
-    transition: opacity 1s ease-out;
 }
