@@ -1,4 +1,4 @@
-.elements {
+.cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, 282px);
     column-gap: 17px;
@@ -9,7 +9,7 @@
 }
 
 @media  screen and (max-width: 1279px) {
-    .elements {
+    .cards {
         margin-bottom: 48px;
         margin-top: 36px;
     }

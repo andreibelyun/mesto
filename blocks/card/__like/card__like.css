@@ -1,4 +1,4 @@
-.element__like {
+.card__like {
     background-color: #fff;
     background-image: url('../../../images/like-button_disabled.svg');
     background-size: auto;
@@ -9,11 +9,12 @@
     padding: 0;
 }
 
-.element__like_active {
+.card__like_active {
     background-image: url('../../../images/like-button_active.svg');
 }
 
-.element__like:hover {
+.card__like:hover {
     cursor: pointer;
     opacity: .5;
+    transition: opacity 1s ease-out;
 }

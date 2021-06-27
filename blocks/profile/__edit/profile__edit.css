@@ -21,4 +21,5 @@
 .profile__edit:hover {
     cursor: pointer;
     opacity: .6;
+    transition: opacity 1s ease-out;
 }
