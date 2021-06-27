@@ -16,5 +16,7 @@
     .header__logo {
         width: 104px;
         height: 25px;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
 }
