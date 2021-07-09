@@ -1,8 +1,10 @@
 .photo-popup__container {
     max-width: 75vw;
-    height: 540px;
+    max-height: 75vh;
+    height: 100%;
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

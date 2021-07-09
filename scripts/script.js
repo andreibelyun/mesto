@@ -116,9 +116,11 @@ function addCard(event) {
   cardElement.querySelector('.card__title').textContent = createPlacePopupInputNameElement.value;
   cardElement.querySelector('.card__photo').src =  createPlacePopupInputInfoElement.value;
   cardsArray.prepend(cardElement);
-  closePopup(createPlacePopupElement);
   addLikeEvent(cardElement.querySelector('.card__like'));
   addRemoveEvent(cardElement.querySelector('.card__remove'));
+  addOpenPhotoPopupEvent(cardElement.querySelector('.card__photo'));
+
+  closePopup(createPlacePopupElement);
 }
 
 // 4. Реализация работы лайков
@@ -146,16 +148,20 @@ function addRemoveEvent(element) {
 }
 
 // 6. Попап с картинкой
+const photos = document.querySelectorAll('.card__photo');
+photos.forEach(item => {addOpenPhotoPopupEvent(item)});
+
+const photoPopupElement = document.querySelector('.photo-popup');
+const closePhotoPopupButton = photoPopupElement.querySelector('.photo-popup__close');
+
+closePhotoPopupButton.addEventListener('click', () => {
+  photoPopupElement.classList.remove('photo-popup_opened');
+});
 
 function addOpenPhotoPopupEvent(element) {
   element.addEventListener('click', () => {
-
+    photoPopupElement.querySelector('.photo-popup__picture').src = element.src;
+    photoPopupElement.querySelector('.photo-popup__caption').textContent = element.closest('.card').querySelector('.card__title').textContent;
+    photoPopupElement.classList.add('photo-popup_opened');
   });
-}
-
-function initPhotoPopup(urlName) {
-  const photoPopupTemplate = document.querySelector('#photo-popup-template').content;
-  const photoPopupElement = photoPopupTemplate.querySelector('.popup').cloneNode('true');
-  popupElement.querySelector('.photo-popup__picture').src = urlName;
-  document.querySelector('.page__container').append(photoPopupElement);
 }
