@@ -31,6 +31,30 @@
             <p class="footer__copyright"> &copy; 2020 Mesto Russia</p>
         </footer>
 
+        <div class="popup edit-profile-popup">
+            <div class="popup__container">
+                <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form name="popupForm" class="popup__form">
+                    <input type="text" name="name" class="popup__input popup__input_type_name">
+                    <input type="text" name="description" class="popup__input popup__input_type_description">
+                    <button class="popup__save" type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="popup create-place-popup">
+            <div class="popup__container">
+                <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form name="popupForm" class="popup__form">
+                    <input type="text" name="name" class="popup__input popup__input_type_name">
+                    <input type="text" name="description" class="popup__input popup__input_type_description">
+                    <button class="popup__save" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+
         <div class="photo-popup">  
             <div class="photo-popup__container">
                 <img class="photo-popup__picture" src="./images/karachaevsk.jpg" alt="">
@@ -49,21 +73,6 @@
                 <button class="card__like" type="button" aria-label="Поставить лайк"></button>
             </div> 
         </article>
-    </template>
-
-    <template id="popup-template">
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
-                <h2 class="popup__title">Название заголовка</h2>
-                <form name="popupForm" class="popup__form">
-                    <input type="text" name="name" class="popup__input popup__input_type_name">
-                    <input type="text" name="description" class="popup__input popup__input_type_description">
-                    <button class="popup__save" type="submit">Название кнопки</button>
-                </form>
-            </div>
-        </div>
-
     </template>
 
     <script src="scripts/script.js"></script>

@@ -1,16 +1,3 @@
-//Добавляем на страницу два похожих попапа (DRY)
-function initPopup(titleName, buttonName, className) {
-    const popupTemplate = document.querySelector('#popup-template').content;
-    const popupElement = popupTemplate.querySelector('.popup').cloneNode('true');
-    popupElement.querySelector('.popup__title').textContent = titleName;
-    popupElement.querySelector('.popup__save').textContent = buttonName;
-    popupElement.classList.add(className);
-    document.querySelector('.page__container').append(popupElement);
-}
-
-initPopup('Редактировать профиль', 'Сохранить', 'edit-profile-popup');
-initPopup('Новое место', 'Создать', 'create-place-popup');
-
 //Элементы профиля
 const editProfileButton = document.querySelector('.profile__edit');
 const profileNameElement = document.querySelector('.profile__name');
