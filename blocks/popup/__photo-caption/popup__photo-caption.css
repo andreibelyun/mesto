@@ -1,4 +1,4 @@
-.photo-popup__caption {
+.popup__photo-caption {
     position: absolute;
     color: #fff;
     font-style: normal;
@@ -8,5 +8,5 @@
     margin: 0;
     padding: 0;
     left: 0;
-    bottom: -25px;
+    bottom: -20px;
 }

@@ -31,35 +31,35 @@
             <p class="footer__copyright"> &copy; 2020 Mesto Russia</p>
         </footer>
 
-        <div class="popup edit-profile-popup">
+        <div class="popup popup_type_edit-profile">
             <div class="popup__container">
                 <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form name="popupForm" class="popup__form">
-                    <input type="text" name="name" class="popup__input popup__input_type_name">
-                    <input type="text" name="description" class="popup__input popup__input_type_description">
+                    <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
+                    <input type="text" name="description" class="popup__input popup__input_type_description" placeholder="Описание">
                     <button class="popup__save" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
 
-        <div class="popup create-place-popup">
+        <div class="popup popup_type_create-place">
             <div class="popup__container">
                 <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form name="popupForm" class="popup__form">
-                    <input type="text" name="name" class="popup__input popup__input_type_name">
-                    <input type="text" name="description" class="popup__input popup__input_type_description">
+                    <input type="text" name="name" class="popup__input popup__input_type_name" placeholder="Название">
+                    <input type="text" name="description" class="popup__input popup__input_type_description" placeholder="Ссылка на картинку">
                     <button class="popup__save" type="submit">Создать</button>
                 </form>
             </div>
         </div>
 
-        <div class="photo-popup">  
-            <div class="photo-popup__container">
-                <img class="photo-popup__picture" src="./images/karachaevsk.jpg" alt="">
-                <p class="photo-popup__caption">Горный Алтай</p>
-                <button class="photo-popup__close" type="button" aria-label="Закрыть окно"></button>
+        <div class="popup popup_type_photo-view">  
+            <div class="popup__container popup__container_type_photo">
+                <img class="popup__photo" src="./images/karachaevsk.jpg" alt="">
+                <p class="popup__photo-caption">Место</p>
+                <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
             </div>    
         </div>
     </div>
@@ -75,6 +75,6 @@
         </article>
     </template>
 
-    <script src="scripts/script.js"></script>
+    <script type="module" src="scripts/script.js"></script>
 </body>
 </html>
