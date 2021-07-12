@@ -33,7 +33,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function initForm() {
+function showEditProfilePopup() {
   profileNameInputElement.value = profileNameElement.textContent;
   profileInfoInputElement.value = profileInfoElement.textContent;
   openPopup(editProfilePopupElement);
@@ -49,6 +49,7 @@ function editInformation(event) {
 function openPhotoPopup(name, link) {
   photoPopupElement.querySelector('.popup__photo-caption').textContent = name;
   photoPopupElement.querySelector('.popup__photo').src = link;
+  photoPopupElement.querySelector('.popup__photo').alt = name;
   openPopup(photoPopupElement);
 }
 
@@ -83,7 +84,7 @@ function addCardElement(event) {
 initialCards.reverse().forEach(item => {createCardElement(item.name, item.link)});
 
 //Открытие формы редактирования профиля
-editProfileButton.addEventListener('click', initForm);
+editProfileButton.addEventListener('click', showEditProfilePopup);
 //Закрытие
 editProfilePopupCloseButton.addEventListener('click', () => {closePopup(editProfilePopupElement)});
 //Сохранение введённых значений
