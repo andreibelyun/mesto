@@ -4,7 +4,7 @@
     height: 50px;
     background-color: #000;
     color: #fff;
-    margin: 48px auto 37px;
+    margin: 32px auto 37px;
     border-radius: 2px;
     border: none;
     font-style: normal;
@@ -12,11 +12,19 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+    padding: 0;
 }
 
 .popup__save:hover {
     opacity: .8;
     cursor: pointer;
+}
+
+.popup__save:disabled {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000000;
+    opacity: .2;
 }
 
 @media  screen and (max-width: 1279px) {

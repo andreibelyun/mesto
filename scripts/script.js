@@ -1,5 +1,3 @@
-//Импорты-> Определение переменных-> Функции-> Основной код-> Слушатели :D
-
 import { initialCards } from "./constants.js";
 
 const cardsContainer = document.querySelector('.cards');
@@ -27,10 +25,14 @@ const closePhotoPopupButton = photoPopupElement.querySelector('.popup__close');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keyup', checkKeyToClosePopup);
+  popup.addEventListener('click', closeByClickOnOverlay);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', checkKeyToClosePopup);
+  popup.removeEventListener('click', closeByClickOnOverlay);
 }
 
 function showEditProfilePopup() {
@@ -78,6 +80,18 @@ function addCardElement(event) {
   createCardElement(placeNameInputElement.value, placePhotoLinkInputElement.value);
   //Закрытие формы
   closePopup(createPlacePopupElement);
+}
+
+function checkKeyToClosePopup(evt) {
+  if(evt.key === "Escape") {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
+
+function closeByClickOnOverlay(evt) {
+  if(evt.target === evt.currentTarget) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
 }
 
 //Загрузка на страницу карточек "из коробки"
