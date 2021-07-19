@@ -25,6 +25,8 @@ const initialCards = [
   }
 ];
 
+const closePopupKey = "Escape";
+
 const cardsContainer = document.querySelector('.cards');
 //Элементы профиля
 const editProfileButton = document.querySelector('.profile__edit');
@@ -63,6 +65,7 @@ function closePopup(popup) {
 function showEditProfilePopup() {
   profileNameInputElement.value = profileNameElement.textContent;
   profileInfoInputElement.value = profileInfoElement.textContent;
+  
   openPopup(editProfilePopupElement);
 }
 
@@ -74,9 +77,10 @@ function editInformation(event) {
 }
 
 function openPhotoPopup(name, link) {
+  const photoElement = photoPopupElement.querySelector('.popup__photo');
   photoPopupElement.querySelector('.popup__photo-caption').textContent = name;
-  photoPopupElement.querySelector('.popup__photo').src = link;
-  photoPopupElement.querySelector('.popup__photo').alt = name;
+  photoElement.src = link;
+  photoElement.alt = name;
   openPopup(photoPopupElement);
 }
 
@@ -97,18 +101,22 @@ function createCardElement(name, link) {
   //Открытие попапа с картинкой
   cardPhotoElement.addEventListener('click', () => openPhotoPopup(name, link));
 
+  return cardElement;
+}
+
+function renderCard(cardElement) {
   cardsContainer.prepend(cardElement);
 }
 
 function addCardElement(event) {
   event.preventDefault();
-  createCardElement(placeNameInputElement.value, placePhotoLinkInputElement.value);
+  renderCard(createCardElement(placeNameInputElement.value, placePhotoLinkInputElement.value));
   //Закрытие формы
   closePopup(createPlacePopupElement);
 }
 
 function checkKeyToClosePopup(evt) {
-  if(evt.key === "Escape") {
+  if(evt.key === closePopupKey) {
     closePopup(document.querySelector('.popup_opened'));
   }
 }
@@ -119,8 +127,12 @@ function closeByClickOnOverlay(evt) {
   }
 }
 
+function disableButton(buttonElement) {
+  buttonElement.setAttribute('disabled', 'disabled');
+}
+
 //Загрузка на страницу карточек "из коробки"
-initialCards.reverse().forEach(item => {createCardElement(item.name, item.link)});
+initialCards.reverse().forEach(item => {renderCard(createCardElement(item.name, item.link))});
 
 //Открытие формы редактирования профиля
 editProfileButton.addEventListener('click', showEditProfilePopup);
@@ -132,6 +144,7 @@ editProfilePopupFormElement.addEventListener('submit', editInformation);
 //Открытие формы добавления новой карточки
 addPlaceButtonElement.addEventListener('click', () => {
   createPlacePopupFormElement.reset();
+  disableButton(createPlacePopupElement.querySelector('.popup__save'));
   openPopup(createPlacePopupElement);
 });
 //Закрытие
