@@ -1,3 +1,6 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -25,6 +28,14 @@ const initialCards = [
   }
 ];
 
+const selectors = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inputErrorClass: 'popup__input_type_error',
+  errorActiveClass: 'popup__input-error_active'
+};
+
 const closePopupKey = "Escape";
 
 const cardsContainer = document.querySelector('.cards');
@@ -51,6 +62,7 @@ const photoPopupElement = document.querySelector('.popup_type_photo-view');
 const closePhotoPopupButton = photoPopupElement.querySelector('.popup__close');
 
 function openPopup(popup) {
+  clearErrorMessages(popup);
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', checkKeyToClosePopup);
   popup.addEventListener('click', closeByClickOnOverlay);
@@ -76,32 +88,12 @@ function editInformation(event) {
   closePopup(editProfilePopupElement);
 }
 
-function openPhotoPopup(name, link) {
+export function openPhotoPopup(name, link) {
   const photoElement = photoPopupElement.querySelector('.popup__photo');
   photoPopupElement.querySelector('.popup__photo-caption').textContent = name;
   photoElement.src = link;
   photoElement.alt = name;
   openPopup(photoPopupElement);
-}
-
-function createCardElement(name, link) {
-  const cardTemplate = document.querySelector('#card').content;
-  const cardElement = cardTemplate.querySelector('.card').cloneNode('true');
-  const likeButtonElement = cardElement.querySelector('.card__like');
-  const removeCardButtonElement = cardElement.querySelector('.card__remove');
-  const cardPhotoElement = cardElement.querySelector('.card__photo');
-
-  cardElement.querySelector('.card__title').textContent = name;
-  cardPhotoElement.src = link;
-  cardPhotoElement.alt = name;
-  //Лайки
-  likeButtonElement.addEventListener('click', event => {event.target.classList.toggle('card__like_active');});
-  //Удаление
-  removeCardButtonElement.addEventListener('click', event => {event.target.closest('.card').remove();});
-  //Открытие попапа с картинкой
-  cardPhotoElement.addEventListener('click', () => openPhotoPopup(name, link));
-
-  return cardElement;
 }
 
 function renderCard(cardElement) {
@@ -110,8 +102,10 @@ function renderCard(cardElement) {
 
 function addCardElement(event) {
   event.preventDefault();
-  renderCard(createCardElement(placeNameInputElement.value, placePhotoLinkInputElement.value));
-  //Закрытие формы
+
+  const card = new Card({name: placeNameInputElement.value, link: placePhotoLinkInputElement.value}, 'card');
+  renderCard(card.createCardElement());
+
   closePopup(createPlacePopupElement);
 }
 
@@ -131,8 +125,22 @@ function disableButton(buttonElement) {
   buttonElement.setAttribute('disabled', 'disabled');
 }
 
+function clearErrorMessages(formElement) {
+  const inputList = Array.from(formElement.querySelectorAll(selectors.inputSelector));
+
+  inputList.forEach(inputElement => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(selectors.inputErrorClass);
+    errorElement.classList.remove(selectors.errorActiveClass);
+    errorElement.textContent = " ";
+  });
+}
+
 //Загрузка на страницу карточек "из коробки"
-initialCards.reverse().forEach(item => {renderCard(createCardElement(item.name, item.link))});
+initialCards.reverse().forEach(data => {
+  const card = new Card(data, 'card');
+  renderCard(card.createCardElement());
+});
 
 //Открытие формы редактирования профиля
 editProfileButton.addEventListener('click', showEditProfilePopup);
@@ -151,6 +159,12 @@ addPlaceButtonElement.addEventListener('click', () => {
 createPlacePopupCloseButton.addEventListener('click', () => {closePopup(createPlacePopupElement)});
 //Создание новой карточки
 createPlacePopupFormElement.addEventListener('submit', event => addCardElement(event));
-
 // Закрытие попапа с картинкой
 closePhotoPopupButton.addEventListener('click', () => {closePopup(photoPopupElement);});
+
+const formList = Array.from(document.querySelectorAll(selectors.formSelector));
+
+formList.forEach(formElement => {
+  const formValidator = new FormValidator(selectors, formElement);
+  formValidator.enableValidation();
+});
