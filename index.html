@@ -36,14 +36,14 @@
                 <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form name="editProfilePopupForm" class="popup__form" novalidate autocomplete="off">
-                    <section class="popup__section">
+                    <div class="popup__section">
                         <input type="text" name="name" id="name-input" class="popup__input popup__input_type_name" placeholder="Имя" required minlength="2" maxlength="40">
                         <span class="popup__input-error name-input-error"></span>
-                    </section>
-                    <section class="popup__section">
+                    </div>
+                    <div class="popup__section">
                         <input type="text" name="description" id="description-input" class="popup__input popup__input_type_description" placeholder="Описание" required minlength="2" maxlength="200">
                         <span class="popup__input-error description-input-error"></span>
-                    </section>
+                    </div>
                     <button class="popup__save" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -54,14 +54,14 @@
                 <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form name="createPlacePopupForm" class="popup__form" novalidate autocomplete="off">
-                    <section class="popup__section">
+                    <div class="popup__section">
                         <input type="text" name="name" id="place-name-input" class="popup__input popup__input_type_name" placeholder="Название" required minlength="2" maxlength="30">
-                        <span class="popup__input-error place-name-input-error">Вы пропустили это поле.</span>
-                    </section>
-                    <section class="popup__section">
+                        <span class="popup__input-error place-name-input-error"></span>
+                    </div>
+                    <div class="popup__section">
                         <input type="url" name="description" id="link-input" class="popup__input popup__input_type_description" placeholder="Ссылка на картинку" required>
-                        <span class="popup__input-error link-input-error">Введите адрес сайта.</span>
-                    </section>
+                        <span class="popup__input-error link-input-error"></span>
+                    </div>
                     <button class="popup__save" type="submit">Создать</button>
                 </form>
             </div>
