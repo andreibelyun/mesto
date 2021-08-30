@@ -1,10 +1,9 @@
-import { openPhotoPopup } from "./index.js";
-
 export default class Card {
-    constructor(data, templateSelector) {
+    constructor(data, templateSelector, handleCardClick) {
       this._text = data.name;
       this._link = data.link;
       this._templateSelector = templateSelector;
+      this._handleCardClick = handleCardClick;
     }
   
     //Создаёт пустой шаблон карточки
@@ -28,14 +27,14 @@ export default class Card {
     }
   
     //Установка слушателей событий
-    _setEventListeners(card) {
-      this._likeButtonElement = card.querySelector('.card__like');
-      this._removeCardButtonElement = card.querySelector('.card__remove');
-      this._cardPhotoElement = card.querySelector('.card__photo');
+    _setEventListeners() {
+      this._likeButtonElement = this._card.querySelector('.card__like');
+      this._removeCardButtonElement = this._card.querySelector('.card__remove');
   
       this._likeButtonElement.addEventListener('click', this._toggleLikeButtonState);
       this._removeCardButtonElement.addEventListener('click', () => { this._removeCard();});
-      this._cardPhotoElement.addEventListener('click', () => openPhotoPopup(this._text, this._link));
+      this._cardPhotoElement.addEventListener('click', () => {
+        this._handleCardClick({name: this._text, url: this._link})});
     }
   
     //Обработчики событий
@@ -53,7 +52,7 @@ export default class Card {
     createCardElement() {
       this._cardElement = this._createEmptyCard(this.templateSelector);
       this._fillCardWithData(this._cardElement);
-      this._setEventListeners(this._cardElement);
+      this._setEventListeners();
       return this._cardElement;
     }
   }

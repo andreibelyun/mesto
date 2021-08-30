@@ -11,6 +11,10 @@
 * JavaScript
 * Constraint validation API
 * Модули
+* NPM
+* Webpack
+* Babel
+* PostCSS
 
 **GitHub**
 

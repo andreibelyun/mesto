@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <!-- <link rel="stylesheet" href="./pages/index.css"> -->
 </head>
 <body class="page">
     <div class="page__container">
@@ -14,7 +14,7 @@
 
         <main>
             <section class="profile">
-                <img src="./images/avatar.jpg" alt="аватар пользователя" class="profile__avatar">
+                <img src="<%=require('./images/avatar.jpg')%>" alt="аватар пользователя" class="profile__avatar">
                 <div class="profile__intro">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
                     <button class="profile__edit" type="button" aria-label="Редактировать профиль"></button>
@@ -69,7 +69,7 @@
 
         <div class="popup popup_type_photo-view">  
             <div class="popup__container popup__container_type_photo">
-                <img class="popup__photo" src="./images/karachaevsk.jpg" alt="фотография">
+                <img class="popup__photo" src="<%=require('./images/karachaevsk.jpg')%>" alt="фотография">
                 <p class="popup__photo-caption">Место</p>
                 <button class="popup__close" type="button" aria-label="Закрыть окно"></button>
             </div>    
@@ -78,7 +78,7 @@
 
     <template id="card">
         <article class="card">
-            <img class="card__photo" src="./images/karachaevsk.jpg" alt="">
+            <img class="card__photo" src="<%=require('./images/karachaevsk.jpg')%>" alt="">
             <button class="card__remove" type="button" aria-label="Удалить карточку"></button>
             <div class="card__info">
                 <h2 class="card__title">Заголовок</h2>
@@ -87,7 +87,6 @@
         </article>
     </template>
 
-    <script type="module" src="./scripts/index.js"></script>
-
+    <!-- <script type="module" src="./pages/index.js"></script> -->
 </body>
 </html>
