@@ -23,9 +23,12 @@ const editProfilePopup = new PopupWithForm('.popup_type_edit-profile', editProfi
 //Кнопки
 const editProfileButton = document.querySelector('.profile__edit');
 const addPlaceButton = document.querySelector('.profile__add-element');
+//Формы
+const createPlacePopupForm = document.querySelector('.popup_type_create-place').querySelector('.popup__form');
+const editProfilePopupForm = document.querySelector('.popup_type_edit-profile').querySelector('.popup__form');
 
-const createPlacePopupValidator = new FormValidator(selectors, createPlacePopup);
-const editProfilePopupValidator = new FormValidator(selectors, editProfilePopup);
+const createPlacePopupValidator = new FormValidator(selectors, createPlacePopupForm);
+const editProfilePopupValidator = new FormValidator(selectors, editProfilePopupForm);
 
 function createPlace(data) {
   const card = createNewCard(data, 'card', handleCardClick);
@@ -43,11 +46,6 @@ function handleCardClick(data) {
 function createNewCard(data, cardTemplateSelector, handleCardClick) {
   const card = new Card(data, cardTemplateSelector, handleCardClick);
   return card.createCardElement();
-}
-
-function getCorrectForm(validator) {
-  validator.hideAllErrors();
-  validator.toggleButtonState();
 }
 
 photoPopup.setEventListeners();

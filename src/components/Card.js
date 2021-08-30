@@ -32,7 +32,7 @@ export default class Card {
       this._removeCardButtonElement = this._card.querySelector('.card__remove');
   
       this._likeButtonElement.addEventListener('click', this._toggleLikeButtonState);
-      this._removeCardButtonElement.addEventListener('click', () => { this._removeCard();});
+      this._removeCardButtonElement.addEventListener('click', this._removeCard.bind(this));
       this._cardPhotoElement.addEventListener('click', () => {
         this._handleCardClick({name: this._text, url: this._link})});
     }
