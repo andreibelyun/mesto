@@ -17,7 +17,7 @@
 .card__remove{background-color:transparent;background-image:url(a274c87c0f6b553b47ad.svg);border:none;height:19.3px;position:absolute;right:15px;top:18px;transition:opacity 1s ease-out;width:18px}.card__remove:hover{cursor:pointer;opacity:.6}
 .card__title{font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:190px}
 .card__info{align-items:center;display:flex;justify-content:space-between;margin:25px 20px 0;padding:0}
-.card__like{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);background-size:auto;border:none;height:19px;margin:0;padding:0;transition:opacity 1s ease-out;width:22px}.card__like:hover{cursor:pointer;opacity:.5}
+.card__like{background-color:#fff;background-image:url(87ed371465c7a6a1cd01.svg);background-size:auto;border:none;height:19px;margin:0;padding:0;transition:opacity 1s ease-out;width:22px}.card__like:hover{cursor:pointer;opacity:.5}.card__likes-count{color:#000}
 .card__like_active{background-image:url(fe17a515669479b1e649.svg)}
 .footer{margin-bottom:60px;width:100%}@media screen and (max-width:1279px){.footer{box-sizing:border-box;margin-bottom:36px;padding:0 19px}}
 .footer__copyright{color:#545454;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:0;padding:0}@media screen and (max-width:1279px){.footer__copyright{font-size:14px;line-height:17px}}
