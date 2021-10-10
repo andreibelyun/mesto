@@ -10,10 +10,12 @@ export default class PopupWithForm extends Popup{
     }
 
     _getInputValues() {
-        return {
-            name: this._nameInput.value,
-            link: this._infoInput.value
-        };
+        if(this._nameInput && this._infoInput) { 
+            return {name: this._nameInput.value, link: this._infoInput.value }
+        } else if(this._infoInput) {
+        return { link: this._infoInput.value }
+        }
+        return {};
     }
     
     _formSubmit() {
@@ -22,8 +24,7 @@ export default class PopupWithForm extends Popup{
     }
 
     setEventListeners() {
-        this._data = this._getInputValues();
-        this._form.addEventListener('submit', () => {this._formSubmit()});
+        this._form.addEventListener('submit', () => { this._formSubmit() });
         super.setEventListeners();
     }
 
