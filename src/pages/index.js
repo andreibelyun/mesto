@@ -12,7 +12,7 @@ import PopupForConfirmation from '../components/PopupForConfirmation.js';
 
 const profileInfo = new UserInfo({nameSelector: '.profile__name', infoSelector: '.profile__description', avatarSelector: '.profile__avatar'});
 
-const cardsList = new Section('.cards');
+const cardsList = new Section(createNewCard, '.cards');
 
 let userId;
 
@@ -171,7 +171,7 @@ Promise.all([getUserInformationPromise, getInitialCardsPromise])
   profileInfo.setUserAvatar(data[0].avatar);
   userId = data[0]._id;
   //Загрузка карточек с сервера
-  cardsList.renderItems(data[1], createNewCard)
+  cardsList.renderItems(data[1])
 })
 .catch(err => {
   console.error(err);
